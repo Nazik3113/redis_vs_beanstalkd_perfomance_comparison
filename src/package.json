@@ -1,0 +1,18 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "Redis vs Beanstalkd perfomance comparison.",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Nazarii Spikhalskyi <nazarii.spikhalskyi@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@markblah/jackd": "^2.1.2",
+    "express": "^4.18.2",
+    "fivebeans": "^1.5.0",
+    "ioredis": "^5.3.2",
+    "nodemon": "^3.0.1"
+  },
+  "type": "module"
+}

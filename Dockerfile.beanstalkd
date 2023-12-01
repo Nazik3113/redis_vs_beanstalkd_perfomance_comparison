@@ -1,0 +1,17 @@
+FROM alpine:3.18.4
+
+WORKDIR /install
+
+RUN apk add --no-cache --update alpine-sdk
+
+RUN wget https://github.com/beanstalkd/beanstalkd/archive/refs/heads/master.zip
+
+RUN unzip master.zip
+
+WORKDIR /install/beanstalkd-master
+
+RUN make && make install
+
+RUN mkdir /var/log/beanstalkd
+
+CMD beanstalkd -l 0.0.0.0 -p 11301 -b /var/log/beanstalkd

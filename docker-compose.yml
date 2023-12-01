@@ -1,0 +1,51 @@
+version: "3.8"
+
+services:
+  hsa1013-node-redis:
+    container_name: hsa1013-node-redis
+    build:
+      context: ./src
+      dockerfile: Dockerfile.redis
+    ports:
+      - 8084:8084
+    networks:
+      - redis-hsa1013
+
+  hsa1013-node-beanstalkd:
+    container_name: hsa1013-node-beanstalkd
+    build:
+      context: ./src
+      dockerfile: Dockerfile.beanstalkd
+    ports:
+      - 8085:8085
+    networks:
+      - redis-hsa1013
+
+  hsa1013-beanstalkd:
+    container_name: hsa1013-beanstalkd
+    build:
+      context: . 
+      dockerfile: Dockerfile.beanstalkd
+    ports:
+      - 11301:11301
+    networks:
+      - redis-hsa1013
+
+  hsa1013-redis:
+    container_name: hsa1013-redis
+    image: redis:alpine3.18
+    command: redis-server /usr/local/etc/redis/redis.conf
+    ports:
+      - 6373:6373
+    volumes:
+      - hsa1012-redis-data:/var/lib/redis
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - redis-hsa1013
+
+volumes:
+  hsa1012-redis-data:
+
+networks:
+  redis-hsa1013:
+    driver: bridge
