@@ -10,7 +10,7 @@ It will run the applications:
 
   * [API Server that works with redis](http://localhost:8084/) on port `8084`
   * [API Server that works with beanstalkd](http://localhost:8085/) on port `8085`
-  * [Redis(1 node)](http://localhost:6373/) on port `6373,6378`
+  * [Redis(1 node)](http://localhost:6373/) on port `6373`
   * [Beanstalkd(1 node)](http://localhost:11301/) on port `11301`
 
 ## API Usage
